@@ -13,4 +13,3 @@ COPY ${JAR_FILE} /banchango.jar
 #컨테이너 실행 명령어
 #ex) java -jar -Dspring.profiles.active=prod /sejongmate.jar
 ENTRYPOINT ["java","-jar","/banchango.jar"]
-#
