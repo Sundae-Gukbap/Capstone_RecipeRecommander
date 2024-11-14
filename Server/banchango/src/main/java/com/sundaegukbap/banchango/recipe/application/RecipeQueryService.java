@@ -2,6 +2,8 @@ package com.sundaegukbap.banchango.recipe.application;
 
 import com.sundaegukbap.banchango.ingredient.application.IngredientMatcher;
 import com.sundaegukbap.banchango.ingredient.domain.Ingredient;
+import com.sundaegukbap.banchango.ingredient.dto.dto.IngredientDto;
+import com.sundaegukbap.banchango.ingredient.dto.dto.IngredientDtos;
 import com.sundaegukbap.banchango.recipe.domain.Recipe;
 import com.sundaegukbap.banchango.recipe.domain.UserRecommendedRecipe;
 import com.sundaegukbap.banchango.recipe.dto.response.RecommendedRecipeResponse;
@@ -69,6 +71,17 @@ public class RecipeQueryService {
         List<Ingredient> have = ingredientRelation.get("have");
         List<Ingredient> need = ingredientRelation.get("need");
 
-        return RecommendedRecipeResponse.of(recipe, have, need);
+        IngredientDtos haveDtos = IngredientDtos.of(have.stream()
+            .map(IngredientDto::of)
+            .toList());
+
+        IngredientDtos needDtos = IngredientDtos.of(need.stream()
+            .map(IngredientDto::of)
+            .toList());
+
+        ingredientMatcher.resolveMainIngredient(recipe, haveDtos);
+        ingredientMatcher.resolveMainIngredient(recipe, needDtos);
+
+        return RecommendedRecipeResponse.of(recipe, haveDtos, needDtos);
     }
 }
