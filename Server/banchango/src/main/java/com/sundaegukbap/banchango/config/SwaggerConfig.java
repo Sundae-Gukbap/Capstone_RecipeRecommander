@@ -21,8 +21,11 @@ public class SwaggerConfig {
         Server server = new Server();
         server.setUrl("https://backendu.com");
 
+        Server localServer = new Server();
+        localServer.setUrl("http://localhost:8080");
+
         return new OpenAPI()
                 .info(info)
-                .servers(List.of(server));
+                .servers(List.of(server, localServer));
     }
 }
