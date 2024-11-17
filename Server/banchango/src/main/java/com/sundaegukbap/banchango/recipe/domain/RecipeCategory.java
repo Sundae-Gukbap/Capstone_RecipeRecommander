@@ -30,7 +30,8 @@ public enum RecipeCategory {
     푸드스타일링(2, "푸드스타일링"),
     해장(2, "해장"),
     명절음식(2, "명절음식"),
-    이유식(2, "이유식");
+    이유식(2, "이유식"),
+    기타(2, "기타");
 
     private final int topCategory;
     private final String subCategory;
