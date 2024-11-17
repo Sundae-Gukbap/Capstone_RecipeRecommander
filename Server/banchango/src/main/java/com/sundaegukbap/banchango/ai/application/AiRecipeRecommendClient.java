@@ -23,8 +23,8 @@ public class AiRecipeRecommendClient {
 
     @Transactional
     public List<Long> getRecommendedRecipesFromAI(RecipeCategory category, List<Ingredient> ingredientList) {
-        AiRecipeRecommendRequest request = AiRecipeRecommendRequest.of(ingredientList);
-        AiRecipeRecommendResponse response = restTemplate.postForObject(aiBaseUrl + "/recommend", request, AiRecipeRecommendResponse.class);
+        AiRecipeRecommendRequest request = AiRecipeRecommendRequest.of(category, ingredientList);
+        AiRecipeRecommendResponse response = restTemplate.postForObject(aiBaseUrl + "/category_recommend", request, AiRecipeRecommendResponse.class);
 
         return response.recommended_recipes();
     }
