@@ -35,10 +35,7 @@ public class IngredientController {
     @Operation(summary = "소유 재료 추가", description = "소유한 재료를 추가한다.")
     public ResponseEntity<String> insertIngredient(@PathVariable("userId") Long userId,
         @RequestBody IngredientInsertRequest request) {
-        long start = System.nanoTime();
         ingredientService.insertIngredient(userId, request);
-        long end = System.nanoTime();
-        System.out.println("insertIngredient: " + (end - start) / 1000000000.0 + "s");
         return new ResponseEntity<>("success add ingredient", HttpStatus.OK);
     }
 
