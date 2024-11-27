@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/recipe")
 @AllArgsConstructor
-@Tag(name = "레시피 조회 관련 컨트롤러")
+@Tag(name = "레시피 조회 컨트롤러")
 public class RecipeController {
 
     private final RecipeQueryService recipeQueryService;
